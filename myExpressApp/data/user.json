@@ -1,0 +1,13 @@
+{
+    "first_user" : {
+        "pwd" : "first_pwd",
+        "name" : "albert",
+        "age" : 21
+    },
+
+    "second_user" : {
+        "pwd" : "second_user",
+        "name" : "alex",
+        "age" : 35
+    }
+}

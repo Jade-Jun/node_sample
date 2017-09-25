@@ -10,6 +10,19 @@ module.exports = function(app, fs)
             length: 5
         });
      });
+     app.get('/list', function(req, res){
+         // 현재경로가 routes이므로
+         fs.readFile(__dirname + "/../data/" + "user.json", 'utf-8', function(err, data){
+               console.log( data );
+            res.end( data );
+         });
+     });
+     app.get('/getUser/:username', function(req, res) {
+         fs.readFile(__dirname + "/../data/" + "user.json", 'utf-8', function(err, data){
+             var users = JSON.parse(data);
+             res.json(users[req.params.username]);
+         });
+     });
     //  app.get('/about',function(req,res){
     //     res.render('about.html');
     // });

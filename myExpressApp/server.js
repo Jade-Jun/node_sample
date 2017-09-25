@@ -8,7 +8,9 @@ var session = require('express-session');
 // file read
 var fs = require('fs');
 
-// server가 읽을 수 있도록 html 위치 지정
+/**
+server가 읽을 수 있도록 html 위치 지정
+ __dirname : 현재 모듈의 위치*/
 app.set('views', __dirname + '/views');
 
 // ejs엔진을 사용하도록 설정
