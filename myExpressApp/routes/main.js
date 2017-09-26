@@ -17,11 +17,55 @@ module.exports = function(app, fs)
             res.end( data );
          });
      });
+
+     /**
+      * 파일을 읽은 후 유저 아이디를 찾아서 알려 줌
+      */
      app.get('/getUser/:username', function(req, res) {
          fs.readFile(__dirname + "/../data/" + "user.json", 'utf-8', function(err, data){
+            //  fs.ReadFile로 읽었을 경우에는 text로 읽어 지기 때문에 json으로 변환해줘야 함.
              var users = JSON.parse(data);
              res.json(users[req.params.username]);
          });
+     });
+     app.post('/addUser/:username', function(req, res) {
+         var result = { };
+         var username = req.params.username;
+
+         /**
+          * request validity check
+          */
+         if (!req.body["pwd"] || !req.body["name"]){
+             result["success"] = 0;
+             result["error"] = "invalid request";
+             res.json(result);
+             return;
+         }
+
+         /**
+          * load data & duplication check
+          */
+        fs.readFile(__dirname + "/../data/user.json", 'utf-8', function(err, data) {
+            var users = JSON.parse(data);
+            if (users[username]) {
+                // duplication found
+                result['success'] = 0;
+                result['error'] = 'duplicate';
+                res.result(result);
+                return;
+            }
+
+            // add data
+            users[username] = req.body;
+
+            // save data
+            fs.writeFile(__dirname + "/../data/user.json", JSON.stringify(users, null, '\t'), "utf-8", function(err, data) {
+                 result = {"success": 1};
+                res.json(result);
+            });
+
+        });
+
      });
     //  app.get('/about',function(req,res){
     //     res.render('about.html');

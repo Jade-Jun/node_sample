@@ -1,13 +1,17 @@
 {
-    "first_user" : {
-        "pwd" : "first_pwd",
-        "name" : "albert",
-        "age" : 21
-    },
-
-    "second_user" : {
-        "pwd" : "second_user",
-        "name" : "alex",
-        "age" : 35
-    }
+	"first_user": {
+		"pwd": "first_pwd",
+		"name": "albert",
+		"age": 21
+	},
+	"second_user": {
+		"pwd": "second_user",
+		"name": "alex",
+		"age": 35
+	},
+	"Sencha": {
+		"pwd": "third_user",
+		"name": "julia",
+		"age": "15"
+	}
 }
