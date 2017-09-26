@@ -13,5 +13,10 @@
 		"pwd": "third_user",
 		"name": "julia",
 		"age": "15"
+	},
+	"Anna": {
+		"pwd": "forward_user",
+		"name": "rula",
+		"age": "22"
 	}
 }
